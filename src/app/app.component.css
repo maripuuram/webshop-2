@@ -1,31 +1,4 @@
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    background-color: darkorange;
-    height: 100px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-}
 
-.navbar img{
-    cursor: pointer;
-    /* background-color: rgb(223, 213, 213); */
-    height: 90px;
-}
-
-.cart-button {
-        background-color: #007cc3;
-        padding: 15px;
-        height: 40px;
-        cursor: pointer;
-        color: white;
-    }
-
-.cart-button img {
-    height: 40px;
-}
 
 
 .content {
@@ -34,10 +7,4 @@
 }
 
 
-.footer{
-    background-color: rgb(87, 255, 20);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin-bottom: -100px;}
+
