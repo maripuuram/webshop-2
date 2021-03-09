@@ -15,14 +15,14 @@ export class HomeComponent implements OnInit {
     private itemService: ItemService) { }
 
   ngOnInit(): void {
-    this.items = this.itemService.items;
-    console.log("Kasutaja läks home component htmli peale")
+    this.items = this.itemService.itemsInService;
+    
     
   }
   onAddToCart(cartItem: Item) {
-    console.log(cartItem);
     this.cartService.cartItems.push(cartItem);
-    console.log("Nupulevajutus töötab")
+    this.cartService.cartChanged.next(this.cartService.cartItems);
+   
   }
 
 }
