@@ -1,11 +1,20 @@
-<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+<form (ngSubmit)="onSubmit(addItemForm)" #addItemForm="ngForm">
    <label>Nimetus</label><br>
-   <input type="text" ngModel name="title" placeholder="Toote nimetus"><br>
+   <input type="text" ngModel name="title" placeholder="Toote nimetus" required><br>
    <label>Nimetus</label><br>
-   <input type="text" ngModel name="imgSrc" placeholder="Toote pilt"><br>
+   <input type="text" ngModel name="imgSrc" placeholder="Toote pilt" required><br>
    <label>Nimetus</label><br>
-   <input type="text" ngModel name="price" placeholder="Toote hind"><br>
-   <label>Nimetus</label><br>
-   <input type="text" ngModel name="category" placeholder="Toote kategooria"><br>
-   <button>Lisa ese</button>
+   <input type="number" ngModel name="price" placeholder="Toote hind" required><br>
+   <label>kategooria</label><br>
+   <input type="text" ngModel name="category" placeholder="Toote kategooria" required><br>
+   <button [disabled]="addItemForm.invalid" type="submit">Lisa ese</button>
 </form>
+
+<br><br><br><br>
+ <form (ngSubmit)="onSubmit(uusVorm)" #uusVorm="ngForm">
+    <label for=""></label><br>
+      <input type="text"><br>
+    <button type="button">LISA KOMMENTAAR</button>
+    <button type="button">?</button>
+    <button type="submit">Lisa toode</button>
+ </form>

@@ -6,18 +6,9 @@ import { Item } from '../models/item.models';
   providedIn: 'root'
 })
 export class CartService {
-  cartItems: Item[] = [];
+  cartItems: Item[] = []
   cartChanged = new Subject<Item[]>();
   
   constructor() { }
-
-  hello () {
-
-  }
-
-  goodbye () {
-
-  }
-  
 
 }

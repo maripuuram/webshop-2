@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Item } from 'src/app/models/item.models';
 import { ItemService } from 'src/app/services/item.service';
 
 @Component({
@@ -9,12 +11,26 @@ import { ItemService } from 'src/app/services/item.service';
 })
 export class AddItemComponent implements OnInit {
 
-  constructor(private itemService: ItemService) { }
+  constructor(private itemService: ItemService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
+
  onSubmit(form : NgForm) {
-   console.log(form.value);
-  this.itemService.itemsInService.push(form.value);
- }
+  if (form.valid) {
+    let formValue = form.value;
+  let item = new Item(
+    formValue.title, 
+    formValue.price, 
+    formValue.imgSrc, 
+    formValue.category);
+    this.itemService.itemsInService.push(item);
+    this.router.navigateByUrl("/admin/items");
+  }
 }
+}
+//  } else {
+//    alert("VIGANE TOODE");
+//  }
+   
