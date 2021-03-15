@@ -19,9 +19,23 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = this.itemService.itemsInService.slice();
+    // this.itemService.saveItemsToDatabase();
+    this.itemService.getItemsFromDatabase().subscribe(items => {
+      this.items = [];
+      this.itemService.itemsInService = [];
+    for (const key in items) {
+      const element = items[key];
+      this.items.push(element);
+      this.itemService.itemsInService.push(element);
+  }
+
+      //this.items = items;
+     // this.itemService.itemsInService = items;
+    })
   }
 
   onSortTitle() {
+    this.itemService.saveItemsToDatabase();
     // sort(saab esimene, teise eseme) =>
     // funktsiooni ning tagastab võrreldud esemed
     // 10,1123,1,1231,1231,1,123,123
@@ -44,13 +58,12 @@ export class HomeComponent implements OnInit {
     
   }
 
-
   onSortPrice() {
     if (this.priceSortNumber == 0) {
       this.items.sort ((a, b) => a.price - b.price);
       this.priceSortNumber = 1;
     } else if (this.priceSortNumber == 1) {
-       this.items.sort((a, b) => a.price - b.price);
+       this.items.sort((a, b) => b.price - a.price);
        this.priceSortNumber = 2; 
     } else {
       this.items = this.itemService.itemsInService.slice();

@@ -1,7 +1,11 @@
-.navbar{
+.navbar {
+    z-index: 999;
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: space-between;
-    background-color: darkorange;
+    background-color: pink;
+    box-shadow: 0 0 100px 0 lightgray;
     height: 100px;
     position: fixed;
     top: 0;
@@ -9,10 +13,31 @@
     right: 0;
 }
 
+.navbar .logo {
+    height: 105px;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
 .navbar img{
     cursor: pointer;
     /* background-color: rgb(223, 213, 213); */
     height: 90px;
+}
+
+.lang-1, .lang-2 {
+    height: 30px;
+    top: 40px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.lang-1 {
+    right: 150px;
+}
+
+.lang-2 {
+    right: 190px;
 }
 
 .cart-button {
