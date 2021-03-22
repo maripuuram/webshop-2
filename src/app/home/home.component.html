@@ -1,22 +1,25 @@
-<br>
+<!-- {{ kuupaev | date }} -->
 
-<div routerLink="admin">Admin</div>>
-<br>
+<div *ngFor="let item of items | uniqueCategory">
+  {{ item }}
+</div>
 
 <div class="filter-bar">
-<div class="filter-value price" (click)="onSortTitle()">{{'Tähestiku järgi' | translate}}</div>
+<div class="filter-name">{{'Järjesta:' | titlecase | uppercase }}></div>
+<div class="filter-value price" (click)="onSortTitle()">{{'Tähestiku järgi' | translate}}></div>
 <div class="filter-value title" (click)="onSortPrice()">Hinna järgi</div>
 </div>
 
-<br><br>
-
 <div class="items-wrapper">
-<div class="item" *ngFor="let item of items">
-  <img src="{{ item.imgSrc }}">
+<div class="item" *ngFor="let item of items; let i = index">
+  <img routerLink="view/{{i}}" src="{{ item.imgSrc }}">
   <div class="add-to-cart-button-wrapper">
-  <div (click)="onAddToCart(item)" class="add-to-cart-button">Lisa ostukorvi</div>
-  <div>
-  <div class="item-title">{{ item.title }}</div>
-  <div class="item-price">{{ item.price }} €</div>
-</div>
+   <div class="add-to-cart-but"></div>
+   <span (click)="onRemoveFromCart(item)">-</span>
+    <span>______</span>
+    <span (click)="onAddToCart(item)">+</span>
+    <div> 
+  <div> 
+<div class="item-title">{{ item.title | translate | shortenTitle:3 }}</div>
+<div class="item-price">{{ item.price | thousandSeparator }} €</div></div>
 </div>

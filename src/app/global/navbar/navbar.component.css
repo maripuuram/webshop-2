@@ -6,6 +6,7 @@
     justify-content: space-between;
     background-color: pink;
     box-shadow: 0 0 100px 0 lightgray;
+    width: 100%;
     height: 100px;
     position: fixed;
     top: 0;
@@ -19,11 +20,6 @@
     cursor: pointer;
 }
 
-.navbar img{
-    cursor: pointer;
-    /* background-color: rgb(223, 213, 213); */
-    height: 90px;
-}
 
 .lang-1, .lang-2 {
     height: 30px;
@@ -50,4 +46,8 @@
 
 .cart-button img {
     height: 40px;
+}
+
+.cart-button:hover {
+    color: #68c300;
 }

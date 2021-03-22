@@ -18,12 +18,12 @@ export class NavbarComponent implements OnInit {
       this.sumOfCart = 0;
       items.forEach(item => {
         //this.sumOfCart = this.sumOfCart + item.price;
-        this.sumOfCart += item.price;
+        this.sumOfCart += item.cartItem.price * item.count;
       });
     })
     let lang = localStorage.getItem("language");
     //Ifis saab vaadata true/false , aga ka kas on olemas või mitte
-    if (lang! = null) {
+    if (lang) {
       this.useLanguage(lang);
     }
       }
@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
    useLanguage(language: string): void {
      this.translate.use(language);
      localStorage.setItem("language", language);
-   }
+       }
   }
 
 

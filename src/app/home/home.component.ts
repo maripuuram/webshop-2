@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   items: Item[] = [];
   titleSortNumber = 0;
   priceSortNumber = 0;
+  //kuupaev = new Date ();
 
 
   constructor(private cartService: CartService,
@@ -20,13 +21,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.items = this.itemService.itemsInService.slice();
     // this.itemService.saveItemsToDatabase();
-    this.itemService.getItemsFromDatabase().subscribe(items => {
+    this.itemService.getItemsFromDatabase().subscribe(itemsFromFirebase => {
       this.items = [];
       this.itemService.itemsInService = [];
-    for (const key in items) {
-      const element = items[key];
-      this.items.push(element);
-      this.itemService.itemsInService.push(element);
+    for (const key in itemsFromFirebase) {
+         const element = itemsFromFirebase[key];
+        this.items.push(element);
+        this.itemService.itemsInService.push(element);
   }
 
       //this.items = items;
@@ -55,8 +56,7 @@ export class HomeComponent implements OnInit {
         this.items = this.itemService.itemsInService.slice();
         this.titleSortNumber = 0;
     }
-    
-  }
+      }
 
   onSortPrice() {
     if (this.priceSortNumber == 0) {
@@ -69,13 +69,37 @@ export class HomeComponent implements OnInit {
       this.items = this.itemService.itemsInService.slice();
       this.priceSortNumber = 0;
     } 
-   
-  }
-  onAddToCart(cartItem: Item) {
-    this.cartService.cartItems.push(cartItem);
-    this.cartService.cartChanged.next(this.cartService.cartItems);
-   
-  }
+     }
 
-}
+  onRemoveFromCart(item: Item) {
+    // {title: "PEALKIRI", price: 49, ...}
+    
+    let i = this.cartService.cartItems.findIndex(cartItem => item.title == cartItem.cartItem.title)
+    if (i != -1) {
+      if (this.cartService.cartItems[i].count == 1) {
+      this.cartService.cartItems.splice(i,1);
+      this.cartService.cartChanged.next(this.cartService.cartItems);
+      } else {
+        this.cartService.cartItems[i].count -= 1;
+      }
+      this.cartService.cartChanged.next(this.cartService.cartItems);
+      }
+      
+    }
+    onAddToCart(item: Item) {
+  
+      let i = this.cartService.cartItems.findIndex(cartItem => item.title == cartItem.cartItem.title)
+      if (i != -1) {
+        this.cartService.cartItems[i].count += 1;
+      } else {
+        this.cartService.cartItems.push({cartItem: item, count: 1});
+            }
+      this.cartService.cartChanged.next(this.cartService.cartItems);
+       }
+      }
+
+      
+
+  
+
  

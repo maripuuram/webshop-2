@@ -14,6 +14,7 @@ export class ItemService {
 
   url = "https://webshio-d2d34-default-rtdb.firebaseio.com/items.json";
 
+  //asendab andmebaasis kõik ära selle väärtusega, mis me kaasa anname
   saveItemsToDatabase() {
     this.http.put(this.url, this.itemsInService).subscribe();
   }

@@ -6,8 +6,14 @@ import { Item } from '../models/item.models';
   providedIn: 'root'
 })
 export class CartService {
-  cartItems: Item[] = []
-  cartChanged = new Subject<Item[]>();
+  // [{title:"PEALKIRI", price: 49,...}]
+  //koguse panemiseks tuleks ülemise read kokku koodada [], loome objekt objektis
+//[
+//{cartItem: {title:"PEALKIRI", ...}}
+//] lõpuks on selle asemel nö Item lühendatult {cartItem: Item, count: 1}
+
+  cartItems: {cartItem: Item, count: number}[] = [];
+  cartChanged = new Subject<{cartItem: Item, count: number}[]>();
   
   constructor() { }
 

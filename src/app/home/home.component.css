@@ -55,7 +55,7 @@
  }
 
  .add-to-cart-button {
-     position: absolute;
+     position: static;
      background-color: white;
      margin: auto;
      margin-top: -40px;

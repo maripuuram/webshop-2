@@ -13,9 +13,13 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './global/navbar/navbar.component';
 import { FooterComponent } from './global/footer/footer.component';
 import { AddItemComponent } from './admin/add-item/add-item.component';
-import { EditItemComponent } from './admine/edit-item/edit-item';
+import { EditItemComponent } from './admine/edit-item/edit-item.component';
 import { ViewItemsComponent } from './admin/view-items/view-items.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { ThousandSeparatorPipe } from './pipes/thousand-separator.pipe';
+import { ShortenTitlePipe } from './pipes/shorten-title.pipe';
+import { ViewComponent } from './item/view/view.component';
+import { UniqueCategoryPipe } from './pipes/unique-category.pipe';
 
 
 
@@ -34,7 +38,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddItemComponent,
     EditItemComponent,
     ViewItemsComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    ThousandSeparatorPipe,
+    ShortenTitlePipe,
+    ViewComponent,
+    UniqueCategoryPipe
   ],
   imports: [
     BrowserModule,

@@ -3,9 +3,8 @@
 <div class="items-wrapper">
 <div class="item"*ngFor="let item of items; let i = index" >
     <div>{{ item.title }}</div>
-    <div>{{ item.price }}</div>
+    <div>{{ item.price | thousandSeparator }}</div>
     <div>{{ item.category }}</div>
-    <div (click)="onDeleteItem(i)">Kustuta ese</div>
     <button class="main-button change" [routerLink]="['/admin/edit-item', i]">Muuda eset</button>
-    </div>
+    <button (click)="onDeleteItem(i)">Kustuta ese</button>
   <div>
