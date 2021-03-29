@@ -6,11 +6,9 @@ Tühjenda ostukorv</div>
 
 <div class="items-wrapper">
 <div class="item" *ngFor="let item of cartItems; let i = index" >
-    <div class="item-title">{{ item.cartItem.title }}</div>
-    <div>Kokku: {{ item.count }} </div>
-    <div class="item-price">{{ item.cartItem.price | thousandSeparator }} €</div>
     <img src="{{ item.cartItem.imgSrc }}">
-    <div>{{ item.category }}</div>
+    <div class="item-title">{{ item.cartItem.title }}</div>
+    <div class="item-price">{{ item.cartItem.price | thousandSeparator }} €</div>
     <div (click)="onDeleteFromCart(i)" class="delete-from-cart-button" src="assets/bin.svg" alt="">
     </div>
   </div>

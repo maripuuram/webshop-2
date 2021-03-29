@@ -1,17 +1,18 @@
-<!-- {{ kuupaev | date }} -->
+<!-- //{{ kuupäev | date }} -->
 
-<div *ngFor="let item of items | uniqueCategory">
-  {{ item }}
+<div *ngFor="let category of itemsOriginal | uniqueCategory; let i = index">
+  <input hidden id="{{category}}" (click)="onSelectCategory(i)" type="checkbox">
+  <label for="{{category}}" [ngClass]="{'category-active': itemCategories[i].isSelected}">{{ category }}</label>
 </div>
 
 <div class="filter-bar">
-<div class="filter-name">{{'Järjesta:' | titlecase | uppercase }}></div>
+<div class="filter-name">{{'Järjesta:' | translate }}></div>
 <div class="filter-value price" (click)="onSortTitle()">{{'Tähestiku järgi' | translate}}></div>
 <div class="filter-value title" (click)="onSortPrice()">Hinna järgi</div>
 </div>
 
 <div class="items-wrapper">
-<div class="item" *ngFor="let item of items; let i = index">
+  <div class="item" *ngFor="let item of itemsShown; let i = index">
   <img routerLink="view/{{i}}" src="{{ item.imgSrc }}">
   <div class="add-to-cart-button-wrapper">
    <div class="add-to-cart-but"></div>
@@ -21,5 +22,11 @@
     <div> 
   <div> 
 <div class="item-title">{{ item.title | translate | shortenTitle:3 }}</div>
-<div class="item-price">{{ item.price | thousandSeparator }} €</div></div>
+<div class="item-price">{{ item.price | thousandSeparator }} €</div>
 </div>
+</div>
+
+
+<div *ngIf="itemsShown.length == 0 && !isLoading">Ühtegi kategooriat pole valitud. Vali sobiv kategooria!</div>
+
+<app-spinner *ngIf="isLoading"></app-spinner>

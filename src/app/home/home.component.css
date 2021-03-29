@@ -1,21 +1,19 @@
 .filter-bar {
     display: flex;
     align-items: center;
-    background-color: #f2f2f2;
+    background-color: #d4d246;
     height: 40px;
     margin: 10px;
     padding-left: 10px;
 }
-.filter-bar div {
-    margin-left: 10px;
-}
+
  .filter-value {
      margin-left: 10px;
-     cursor: pointer;
+     cursor: w-resize;
  }
 
  .items-wrapper {
-     padding: 10px;
+     padding: 15px;
      display: grid;
      grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
  }
@@ -38,15 +36,15 @@
 
  .item-price {
      text-align: center;
-     background-color: #f2f2f2;
-     border-radius: 10px 0 10px 10px;
+     background-color: #dceebc;
+     border-radius: 10px 100 10px 10px;
      padding: 4px 10px 0 10px;
      min-height: 26px;
      width: 80px;
  }
 
  .item-title, .item-price {
-     margin: 10px;
+     margin: -75px;
  }
 
  .add-to-cart-button-wrapper {
@@ -55,17 +53,19 @@
  }
 
  .add-to-cart-button {
-     position: static;
-     background-color: white;
-     margin: auto;
-     margin-top: -40px;
-     visibility: hidden;
-     box-shadow: 0 0 10px 0 lightgray;
-     border-radius: 30px;
-     padding: 10px;
-     cursor: pointer;
- }
+    position: absolute;
+    background-color: white;
+    margin: auto;
+    margin-top: -40px;
+    visibility: hidden;
+    box-shadow: 0 0 10px 0 lightgray;
+    border-radius: 30px;
+    padding: 10px;
+    cursor: pointer;
+}
 
  .item:hover .add-to-cart-button {
      visibility: visible;
  }
+
+ 

@@ -1,15 +1,15 @@
-<button class="main-button back" routerLink="/admin">{{'Tagasi' </button>
+<button class="main-button back" routerLink="/admin">{{'Tagasi' | translate }}</button>
 
 
 <form (ngSubmit)="onSubmit(addItemForm)" #addItemForm="ngForm">
    <label>Nimetus</label><br>
    <input type="text" ngModel name="title" placeholder="Toote nimetus" required><br>
-   <label>Nimetus</label><br>
+   <label>Pilt</label><br>
    <input type="text" ngModel name="imgSrc" placeholder="Toote pilt" required><br>
-   <label>Nimetus</label><br>
+   <label>Hind</label><br>
    <input type="number" ngModel name="price" placeholder="Toote hind" required><br>
-   <label>kategooria</label><br>
+   <label>Kategooria</label><br>
    <input type="text" ngModel name="category" placeholder="Toote kategooria" required><br>
-   <button [disabled]="addItemForm.invalid" type="submit">Lisa ese</button>
+   <button class="main-button add" [disabled]="addItemForm.invalid" type="submit">Lisa ese</button>
 </form>
 
